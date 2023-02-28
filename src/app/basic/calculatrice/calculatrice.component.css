@@ -1,0 +1,14 @@
+.positif{
+    color: red;
+    font-weight: bold;
+}
+.negatif{
+    color: blue;
+    font-style: italic;
+}
+
+.div{
+    width: 100%;
+    height: 500px;
+    background-color: gray;
+}

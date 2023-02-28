@@ -1,0 +1,19 @@
+<label for="">Indiquez un premier nombre: </label>
+<input type="number" [(ngModel)]="firstNumber">
+<br>
+<label for="">Indiquez un second nombre: </label>
+<input type="number" [(ngModel)]="secondNumber">
+<br>
+<button (click)="onCalculer('+')">Additionner</button>
+<button (click)="onCalculer('-')">Soustraire</button>
+<button (click)="onCalculer('*')">Multiplier</button>
+<button (click)="onCalculer('/')">Diviser</button>
+<br>
+<label for="">Résultat: </label>
+<!-- <span [style.color]="result > 0 ? 'blue' : 'red'">{{ result }}</span> -->
+<span [class.positif]="result > 0" [class.negatif]="result < 0">{{ result }}</span>
+<br>
+<hr>
+<div class="div" (mousemove)="onMouseMouve($event)" (mouseout)="onMouseLeave()">
+</div>
+<span>x: {{ x }} y: {{ y }}</span>

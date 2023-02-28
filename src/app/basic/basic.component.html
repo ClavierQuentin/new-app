@@ -1,0 +1,16 @@
+<div class="basic row">
+    <div class="form-group col-2">
+        <input type="text" [(ngModel)] = "userName" class="form-control"> <br>
+        <button (click)="onAction()" class="btn btn-primary">Valider</button> <br>    
+    </div>
+    <p>{{ message }}</p>
+    <toggle-panel [title]="'Calculatrice'">
+        <app-calculatrice></app-calculatrice>
+    </toggle-panel>
+    <toggle-panel [title]="'TVA'">
+        <app-tva></app-tva>    
+    </toggle-panel>
+    <toggle-panel [title]="'Zz'">
+        <app-zz></app-zz>
+    </toggle-panel>
+</div>

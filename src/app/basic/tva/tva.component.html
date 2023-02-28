@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-6">
+        <h3>Calcul de la TVA</h3>
+        <div class="row form-group m-2">
+            <label class="col-2 ">Prix HT: </label>
+            <div class="col-6">
+                <input class="form-control" type="number" [(ngModel)]="prixHt"(input)="calculerTtc()">
+            </div>
+        </div>
+        <div class="row form-group m-2">
+            <label class="col-2">Taux de TVA:</label> 
+            <div class="col-6">
+                <select class="form-control" [(ngModel)]="tauxTva" (change)="calculerTtc()">
+                    <option  *ngFor="let taux of listTauxTva" [ngValue]="taux">{{ taux }}%</option>
+                </select>  
+            </div>
+        </div>
+        <div class="row m-2">
+            <label class="col-2">TVA: </label>
+            <div class="col-6">
+                <span *ngIf="tva > 0">{{ tva | number:'1.0-2' }}€</span>
+            </div>
+        </div>
+        <div class="row m-2">
+            <label class="col-2">Prix TTC: </label> 
+            <div class="col-6">
+                <span *ngIf="prixTtc > 0">{{ prixTtc | number:'1.0-2' }}€</span>
+            </div>
+        </div>        
+    </div>
+</div>

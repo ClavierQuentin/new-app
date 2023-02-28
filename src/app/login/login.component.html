@@ -1,0 +1,39 @@
+<form #formLogin="ngForm">
+    <div class="row align-items-center m-3" >
+        <div class="col-2">
+            <label class="col-form-label">Username: </label>
+        </div>
+        <div class="col-auto">
+            <input type="text" class="form-control" required [(ngModel)]="login.username" pattern="^[a-zA-Z].+" name="username" #usernameInput="ngModel">
+        </div>
+        <div [hidden]="usernameInput.valid" class="alert alert-danger col-auto">
+            Username doit commencer par une lettre
+        </div>
+    </div>
+    <div class="row align-items-center m-3" >
+        <div class="col-2">
+            <label class="col-form-label">Mot de passe: </label>
+        </div>
+        <div class="col-auto">
+            <input type="password" class="form-control" required [(ngModel)]="login.password" name="password" #passwordInput="ngModel">
+        </div>
+        <div [hidden] = "passwordInput.valid" class="alert alert-danger col-auto">
+            Le password est obligatoire
+        </div>
+
+    </div>
+    <div class="row align-items-center m-3" >
+        <div class="col-2">
+            <label class="col-form-label">Roles: </label>
+        </div>
+        <div class="col-auto">
+            <input type="text" class="form-control" [(ngModel)]="login.roles" name="roles">
+        </div>
+    </div>
+
+    <button class="btn btn-light m-3" (click)="onLogin()" [disabled]="!formLogin.form.valid">Valider</button>
+</form>
+
+<div *ngIf="message.length > 0">
+    Message : {{message}}
+</div>
