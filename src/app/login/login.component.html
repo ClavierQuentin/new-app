@@ -4,7 +4,7 @@
             <label class="col-form-label">Username: </label>
         </div>
         <div class="col-auto">
-            <input type="text" class="form-control" required [(ngModel)]="login.username" pattern="^[a-zA-Z].+" name="username" #usernameInput="ngModel">
+            <input type="text" class="form-control" required [(ngModel)]="loginService.username" pattern="^[a-zA-Z].+" name="username" #usernameInput="ngModel">
         </div>
         <div [hidden]="usernameInput.valid" class="alert alert-danger col-auto">
             Username doit commencer par une lettre

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Login } from '../common/data/login';
+import { LoginService } from '../common/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -14,5 +15,7 @@ export class LoginComponent {
     this.message ="Données saisies" + JSON.stringify(this.login);
   }
 
-  constructor() { }
+  constructor(public loginService:LoginService) {
+    this.login.username = loginService.username;
+   }
 }
