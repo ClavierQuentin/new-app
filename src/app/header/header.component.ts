@@ -13,10 +13,8 @@ export class HeaderComponent implements OnInit{
   description = "";
 
   constructor(public preferencesService:PreferencesService ){
-    console.log(" dans constructeurEn tête de titre:" + this.title);
   }
   ngOnInit(): void {
-      console.log("Dans onInit titre = " + this.title);
       
   }
 }

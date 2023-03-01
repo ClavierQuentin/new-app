@@ -15,6 +15,8 @@ import { LoginComponent } from './login/login.component';
 import { TogglePanelComponent } from './common/components/toggle-panel/toggle-panel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
+import { ConversionComponent } from './conversion/conversion.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     ZzComponent,
     WelcomeComponent,
     LoginComponent,
-    TogglePanelComponent
+    TogglePanelComponent,
+    ConversionComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     FormsModule, 
     BrowserAnimationsModule,
     MatTabsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

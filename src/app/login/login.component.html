@@ -4,7 +4,7 @@
             <label class="col-form-label">Username: </label>
         </div>
         <div class="col-auto">
-            <input type="text" class="form-control" required [(ngModel)]="loginService.username" pattern="^[a-zA-Z].+" name="username" #usernameInput="ngModel">
+            <input type="text" class="form-control" required [(ngModel)]="login.username" pattern="^[a-zA-Z].+" name="username" #usernameInput="ngModel">
         </div>
         <div [hidden]="usernameInput.valid" class="alert alert-danger col-auto">
             Username doit commencer par une lettre
@@ -34,6 +34,6 @@
     <button class="btn btn-light m-3" (click)="onLogin()" [disabled]="!formLogin.form.valid">Valider</button>
 </form>
 
-<div *ngIf="message.length > 0">
+<div *ngIf="message.length > 0" [class.alert-danger]="!logged" [class.alert-success]="logged" class="alert">
     Message : {{message}}
 </div>
