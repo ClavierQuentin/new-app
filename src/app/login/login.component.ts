@@ -14,6 +14,7 @@ export class LoginComponent {
   public logged:boolean = false;
 
   public onLogin(){
+    this.login.username = this._loginService.username;
     this._loginService.postLogin$(this.login)
         .subscribe({
           next: (loginResponse:LoginResponse) => {this.message = loginResponse.message; this.logged = loginResponse.status;
@@ -22,6 +23,7 @@ export class LoginComponent {
         })
   }
 
-  constructor(private _loginService:LoginService) {
+  constructor(public _loginService:LoginService){
+    this.login.username = _loginService.username;
    }
 }

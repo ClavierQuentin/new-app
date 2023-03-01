@@ -10,6 +10,8 @@ import { LoginResponse } from '../data/loginResponse';
 export class LoginService {
 
   private _apiBasUrl = "/login-api";
+
+  public username:string = "";
   
   constructor(private _http:HttpClient) { 
   }
