@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-sm-6">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Nationalité</th>
+                    <th>Sexe</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of playerList" (click)="onDetails(p)" style="cursor:pointer;" [class.selected]="p == selectedPlayer">
+                    <td>{{p.lastName | uppercase}}</td>
+                    <td>{{p.firstName}}</td>
+                    <td>{{nationaly(p.nationality)}}</td>
+                    <td>{{sexe(p.sexe)}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-6" [hidden]="isNew">
+        <div class="form-group m-2">
+            <label class="form-label">Nom</label>
+            <input type="text" class="form-control" [(ngModel)]="player.lastName" [disabled]="!selectedPlayer">
+        </div>
+        <div class="form-group m-2">
+            <label class="form-label">Prénom</label>
+            <input type="text" class="form-control" [(ngModel)]="player.firstName" [disabled]="!selectedPlayer">
+        </div>
+        <div class="form-group m-2">
+            <label class="form-label">Nationalité</label>
+            <select name="" id="" class="form-control" [(ngModel)]="player.nationality" [disabled]="!selectedPlayer">
+                <option *ngFor="let n of nationalityEnumKeys" [value]="n">{{nationalites[n]}}</option>
+            </select>
+        </div>
+        <div class="form-group m-2">
+            <label class="form-label">Sexe</label>
+            <select name="" id="" class="form-control" [(ngModel)]="player.sexe" [disabled]="!selectedPlayer">
+                <option *ngFor="let s of sexeEnumKeys" [value]="s">{{sexes[s]}}</option>
+            </select>
+        </div>
+        <button class="btn btn-light m-2" (click)="onNewform()">Ajouter nouveau</button>
+        <button class="btn btn-warning m-2 " (click)="onUpdatePlayer()">Mettre à jour</button>
+        <button class="btn btn-danger m-2" (click)="onDelete()">Supprimer</button>
+    </div>
+    <div class="col-sm-6" [hidden]="!isNew">
+        <div class="form-group m-2">
+            <label class="form-label">Nom</label>
+            <input type="text" class="form-control" [(ngModel)]="newPlayer.lastName">
+        </div>
+        <div class="form-group m-2">
+            <label class="form-label">Prénom</label>
+            <input type="text" class="form-control" [(ngModel)]="newPlayer.firstName">
+        </div>
+        <div class="form-group m-2">
+            <label class="form-label">Nationalité</label>
+            <select name="" id="" class="form-control" [(ngModel)]="newPlayer.nationality">
+                <option *ngFor="let n of nationalityEnumKeys" [value]="n">{{nationalites[n]}}</option>
+            </select>
+        </div>
+        <div class="form-group m-2">
+            <label class="form-label">Sexe</label>
+            <select name="" id="" class="form-control" [(ngModel)]="newPlayer.sexe">
+                <option *ngFor="let s of sexeEnumKeys" [value]="s">{{sexes[s]}}</option>
+            </select>
+        </div>
+        <button class="btn btn-light m-2" (click)="onAddNewPlayer()">Enregistrer</button>
+        <button class="btn btn-danger" (click)="onNewform()">Revenir</button>
+    </div>
+
+</div>

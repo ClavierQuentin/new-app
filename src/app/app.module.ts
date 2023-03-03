@@ -17,6 +17,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ConversionComponent } from './conversion/conversion.component';
 import {HttpClientModule} from '@angular/common/http';
+import { StudentComponent } from './student/student.component';
+import { PlayersComponent } from './players/players.component';
+import { MatchsComponent } from './matchs/matchs.component';
+import { CreateMatchComponent } from './matchs/create-match/create-match.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import {HttpClientModule} from '@angular/common/http';
     WelcomeComponent,
     LoginComponent,
     TogglePanelComponent,
-    ConversionComponent
+    ConversionComponent,
+    StudentComponent,
+    PlayersComponent,
+    MatchsComponent,
+    CreateMatchComponent
   ],
   imports: [
     BrowserModule,

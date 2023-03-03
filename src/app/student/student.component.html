@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-sm-6">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th >#</th>
+                    <th >Firstname</th>
+                    <th >Lastname</th>
+                    <th >Date d'inscription</th>
+                </tr>    
+            </thead>
+            <tbody>
+                <tr *ngFor="let s of studentsList" (click)="onClickGetDetails(s)" style="cursor: pointer;" [class.selected]="selectedStudent == s">
+                    <td >{{ s.id }}</td>
+                    <td>{{ s.firstMidName }}</td>
+                    <td>{{ s.lastName }}</td>
+                    <td>{{ s.enrollmentDate | date:"dd/MM/yyyy" }}</td>
+                </tr>    
+            </tbody>
+        </table>
+        {{message}}
+    </div>
+    <div class="col-sm-6" [hidden]="isNewForm" [style.display.block]="!isNewForm">
+        <div class="form-group mt-2">
+            <label class="form-label">Firstname</label>
+            <input type="text" class="form-control" [(ngModel)]="student.firstMidName" [disabled]="!selectedStudent">
+        </div>
+        <div class="form-group mt-2">
+            <label class="form-label">Lastname</label>
+            <input type="text" class="form-control" [(ngModel)]="student.lastName" [disabled]="!selectedStudent">
+        </div>
+        <div class="form-group mt-2">
+            <label class="form-label">Enrollment Date</label>
+            <input type="datetime-local" class="form-control" [(ngModel)]="student.enrollmentDate" [disabled]="!selectedStudent" >
+        </div>
+        <div>
+            <button class="btn btn-primary m-3" (click)="onNewForm()">Nouveau</button>
+            <button class="btn btn-warning m-3" (click)="onUpdate()" [hidden]="!selectedStudent" >Modifier</button>
+            <button class="btn btn-danger m-3" (click)="onDelete()" [hidden]="!selectedStudent">Supprimer</button>
+        </div>
+    </div>
+
+    <div class="col-sm-6" [hidden]="!isNewForm" [style.display.block]="isNewForm">
+        <div class="form-group mt-2">
+            <label class="form-label">Firstname</label>
+            <input type="text" class="form-control" [(ngModel)]="newStudent.firstMidName">
+        </div>
+        <div class="form-group mt-2">
+            <label class="form-label">Lastname</label>
+            <input type="text" class="form-control" [(ngModel)]="newStudent.lastName">
+        </div>
+        <div class="form-group mt-2">
+            <label class="form-label">Enrollment Date</label>
+            <input type="datetime-local" class="form-control" [(ngModel)]="newStudent.enrollmentDate">
+        </div>
+        <div>
+            <button class="btn btn-primary m-3" (click)="onAddStudent()">Ajouter</button>
+            <button class="btn btn-warning m-3" (click)="onBack()">Back</button>
+        </div>
+    </div>
+
+</div>
