@@ -1,0 +1,25 @@
+<h2 class="text-center">Liste des matchs</h2>
+<div class="row text-center">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Joueur 1</th>
+                <th>Nationalité</th>
+                <th>Date et heure</th>
+                <th>Joueur 2</th>
+                <th>Nationalité</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let m of matchList">
+                <td>{{ m.firstPlayer.lastName }} {{ m.firstPlayer.firstName }}</td>
+                <td>{{ getNationalityFromEnum(m.firstPlayer.nationality) }}</td>
+                <td>{{ m.startingDate | date:'dd/MM/YYYY HH:mm'}}</td>
+                <td>{{ m.secondPlayer.lastName }} {{m.secondPlayer.firstName}}</td>
+                <td>{{ getNationalityFromEnum(m.secondPlayer.nationality) }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<a routerLink="/matchs/create" class="btn btn-primary m-5">Enregistrer un nouveau match</a>
+
