@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { async } from '@angular/core/testing';
+import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { Court } from 'src/app/common/data/tennis-tournament/court';
 import { Match } from 'src/app/common/data/tennis-tournament/match';
@@ -23,11 +23,6 @@ export class CreateMatchComponent implements OnInit {
 
 
   public match:Match = new Match();
-  public firstPlayer:Player | null = null;
-  public secondPlayer:Player | null = null;
-  public referee:Referee | null = null;
-  public court:Court | null = null;
-  public tournament:Tournament | null = null; 
 
   public playerList:Player[] = [];
   public secondPlayerList:Player[] = [];
@@ -54,7 +49,9 @@ export class CreateMatchComponent implements OnInit {
   }
 
   public onSelectFirstPlayer(){
+
     let firstPlayerList:Player[] = this.clone(this.playerList);
+
     for(let i = 0; i < firstPlayerList.length; i++){
       if(firstPlayerList[i].id == this.firstPlayerId){
         this.match.firstPlayer = firstPlayerList[i];
@@ -89,7 +86,7 @@ export class CreateMatchComponent implements OnInit {
     try{
       let newMatch = await firstValueFrom(this.matchService.addMatch$(this.match));
       if(newMatch){
-        location.href="/matchs";
+        this.router.navigate(["matchs"]);
       }
       console.log(newMatch);
     }catch(err){
@@ -98,7 +95,7 @@ export class CreateMatchComponent implements OnInit {
     }
   }
 
-  constructor(private playerService:PlayerService, private matchService:MatchService){} 
+  constructor(private playerService:PlayerService, private matchService:MatchService, private router:Router){} 
 
   ngOnInit(): void {
       this.onGetList();
